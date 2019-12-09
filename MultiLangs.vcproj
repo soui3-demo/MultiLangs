@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="MultiLangs"
-	ProjectGUID="{08885EB6-57C3-3937-BC8A-9533C9D1C7A0}"
+	ProjectGUID="{E276CFE7-F636-337A-B269-E3874C88F20A}"
 	Keyword="Qt4VSv1.0">
 	<Platforms>
 		<Platform
@@ -12,27 +12,26 @@
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\..\bin\"
+			OutputDirectory="release\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
 			ConfigurationType="1"
-			IntermediateDirectory="..\..\obj\release\MultiLangs\"
+			IntermediateDirectory="release\"
 			UseOfMfc="0">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".,.,..\..\utilities\include,..\..\soui\include,..\..\components,..\..\config,..\..\tools\mkspecs\win32-msvc2008"
-				AdditionalOptions="/MP -w34100 -w34189 -w44996"
-				AssemblerListingLocation="..\..\obj\release\MultiLangs\"
-				DebugInformationFormat="3"
-				DisableSpecificWarnings="4100,4101,4102,4189,4996"
+				AdditionalIncludeDirectories=".,.,$(SOUI3PATH)/utilities/include,$(SOUI3PATH)/soui/include,$(SOUI3PATH)/components,$(SOUI3PATH)/config,..\soui3.git\tools\mkspecs\win32-msvc2008"
+				AdditionalOptions="/MP"
+				AssemblerListingLocation="release\"
+				DebugInformationFormat="0"
 				ExceptionHandling="1"
 				ForcedIncludeFiles="stdafx.h"
 				GeneratePreprocessedFile="0"
-				ObjectFile="..\..\obj\release\MultiLangs\"
-				Optimization ="1"
+				ObjectFile="release\"
+				Optimization ="2"
 				PrecompiledHeaderFile="$(IntDir)\MultiLangs.pch"
 				PrecompiledHeaderThrough="stdafx.h"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,QT_NO_DYNAMIC_CAST,NDEBUG"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_NO_DYNAMIC_CAST,NDEBUG"
 				ProgramDataBaseFileName="$(IntDir)"
 				RuntimeLibrary="0"
 				SuppressStartupBanner="true"
@@ -43,16 +42,14 @@
 				Name="VCCustomBuildTool" />
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="utilities.lib soui.lib"
-				AdditionalLibraryDirectories="..\..\bin"
+				AdditionalDependencies="utilities.lib soui3.lib"
+				AdditionalLibraryDirectories="$(SOUI3PATH)\bin"
 				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
 				DataExecutionPrevention="true"
-				EnableCOMDATFolding="2"
-				GenerateDebugInformation="true"
+				GenerateDebugInformation="false"
 				IgnoreImportLibrary="true"
 				LinkIncremental="1"
 				LinkTimeCodeGeneration="0"
-				OptimizeReferences="2"
 				OutputFile="$(OutDir)\MultiLangs.exe"
 				ProgramDatabaseFile=""
 				RandomizedBaseAddress="true"
@@ -74,31 +71,30 @@
 				Name="VCPreLinkEventTool" />
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,QT_NO_DYNAMIC_CAST" />
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_NO_DYNAMIC_CAST" />
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\bin\"
+			OutputDirectory="debug\"
 			ATLMinimizesCRunTimeLibraryUsage="false"
 			CharacterSet="1"
 			ConfigurationType="1"
-			IntermediateDirectory="..\..\obj\debug\MultiLangs\"
+			IntermediateDirectory="debug\"
 			UseOfMfc="0">
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories=".,.,..\..\utilities\include,..\..\soui\include,..\..\components,..\..\config,..\..\tools\mkspecs\win32-msvc2008"
-				AdditionalOptions="/MP -w34100 -w34189 -w44996"
-				AssemblerListingLocation="..\..\obj\debug\MultiLangs\"
+				AdditionalIncludeDirectories=".,.,$(SOUI3PATH)/utilities/include,$(SOUI3PATH)/soui/include,$(SOUI3PATH)/components,$(SOUI3PATH)/config,..\soui3.git\tools\mkspecs\win32-msvc2008"
+				AdditionalOptions="/MP"
+				AssemblerListingLocation="debug\"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4100,4101,4102,4189,4996"
 				ExceptionHandling="1"
 				ForcedIncludeFiles="stdafx.h"
 				GeneratePreprocessedFile="0"
-				ObjectFile="..\..\obj\debug\MultiLangs\"
+				ObjectFile="debug\"
 				Optimization ="4"
-				PrecompiledHeaderFile="$(IntDir)\MultiLangsd.pch"
+				PrecompiledHeaderFile="$(IntDir)\MultiLangs.pch"
 				PrecompiledHeaderThrough="stdafx.h"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,QT_NO_DYNAMIC_CAST"
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_NO_DYNAMIC_CAST"
 				ProgramDataBaseFileName="$(IntDir)"
 				RuntimeLibrary="1"
 				SuppressStartupBanner="true"
@@ -109,14 +105,14 @@
 				Name="VCCustomBuildTool" />
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="utilitiesd.lib souid.lib"
-				AdditionalLibraryDirectories="..\..\bin"
+				AdditionalDependencies="utilitiesd.lib soui3d.lib"
+				AdditionalLibraryDirectories="$(SOUI3PATH)\bin"
 				AdditionalOptions="&quot;/MANIFESTDEPENDENCY:type=&apos;win32&apos; name=&apos;Microsoft.Windows.Common-Controls&apos; version=&apos;6.0.0.0&apos; publicKeyToken=&apos;6595b64144ccf1df&apos; language=&apos;*&apos; processorArchitecture=&apos;*&apos;&quot;"
 				DataExecutionPrevention="true"
 				GenerateDebugInformation="true"
 				IgnoreImportLibrary="true"
 				LinkTimeCodeGeneration="0"
-				OutputFile="$(OutDir)\MultiLangsd.exe"
+				OutputFile="$(OutDir)\MultiLangs.exe"
 				ProgramDatabaseFile=""
 				RandomizedBaseAddress="true"
 				SubSystem="2"
@@ -137,7 +133,7 @@
 				Name="VCPreLinkEventTool" />
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,_CRT_SECURE_NO_WARNINGS,QT_NO_DYNAMIC_CAST,_DEBUG" />
+				PreprocessorDefinitions="_WINDOWS,UNICODE,WIN32,QT_NO_DYNAMIC_CAST,_DEBUG" />
 		</Configuration>
 	</Configurations>
 	<Files>

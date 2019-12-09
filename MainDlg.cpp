@@ -178,7 +178,7 @@ void CMainDlg::OnLanguage(int nID)
 	bool bCnLang = nID == R.id.lang_cn;
 
 	pugi::xml_document xmlLang;
-	if (SApplication::getSingletonPtr()->LoadXmlDocment(xmlLang, bCnLang?_T("cn"):_T("en"), _T("lang")))
+	if (SApplication::getSingletonPtr()->LoadXmlDocment(xmlLang, bCnLang?_T("lang:cn"):_T("lang:en")))
 	{
 		CAutoRefPtr<ITranslator> lang;
 		pTransMgr->CreateTranslator(&lang);
@@ -188,8 +188,13 @@ void CMainDlg::OnLanguage(int nID)
 		pTransMgr->SetLanguage(szName);
 		pTransMgr->InstallTranslator(lang);
 
-		SFontPool::getSingletonPtr()->UpdateFonts();//update fonts that defined by translator
-		SDispatchMessage(UM_SETLANGUAGE,0,0);
+		SDispatchMessage(UM_SETLANGUAGE);
+		SStringW strFontInfo = lang->getFontInfo();
+		if(!strFontInfo.IsEmpty())
+		{
+			SFontPool::getSingletonPtr()->SetDefFontInfo(strFontInfo);
+			SDispatchMessage(UM_UPDATEFONT);
+		}
 	}
 
 }
@@ -198,7 +203,7 @@ void CMainDlg::OnLanguage(int nID)
 //TODO:消息映射
 void CMainDlg::OnClose()
 {
-	CSimpleWnd::DestroyWindow();
+	SNativeWnd::DestroyWindow();
 }
 
 void CMainDlg::OnMaximize()
@@ -288,7 +293,7 @@ void CMainDlg::OnBtnScale(int nID)
 
 	SDispatchMessage(UM_SETSCALE,nScale,0);
 
-	if(!CSimpleWnd::IsZoomed()){
+	if(!SNativeWnd::IsZoomed()){
 		SetWindowPos(0, 0, 0, nNewWid, nNewHei, SWP_NOZORDER | SWP_NOMOVE);
 	}
 }
