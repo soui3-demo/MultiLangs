@@ -193,10 +193,8 @@ void CMainDlg::OnLanguage(int nID)
 		if(!strFontInfo.IsEmpty())
 		{
 			SFontPool::getSingletonPtr()->SetDefFontInfo(strFontInfo);
-			SDispatchMessage(UM_UPDATEFONT);
 		}
 	}
-
 }
 
 
